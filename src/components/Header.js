@@ -1,23 +1,47 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { signOut } from "@firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { auth } from "../utils/firebase";
-
+import { onAuthStateChanged } from "@firebase/auth";
+import { useDispatch } from "react-redux";
+import { userSliceAction } from "../store/userSlice";
 const Header = () => {
+  const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const navigate = useNavigate();
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        navigate("/");
       })
       .catch((error) => {
         // An error happened.
         navigate("/error");
       });
   };
+
+  useEffect(() => {
+    // Any change in login,signup signout
+    const unsunscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(
+          userSliceAction.addUser({ uid, email, displayName, photoURL })
+        );
+        navigate("/browse");
+        // ...
+      } else {
+        // User is signed out
+        // ...
+        dispatch(userSliceAction.removeUser());
+        navigate("/");
+      }
+    });
+    return () => unsunscribe();
+  }, []);
 
   return (
     <div className="absolute px-8 py-8 bg-gradient-to-b from-black z-10 w-full flex justify-between">

@@ -10,11 +10,10 @@ import { auth } from "../utils/firebase";
 import { checkValidateData } from "../utils/validate";
 import { useDispatch } from "react-redux";
 import { userSliceAction } from "../store/userSlice";
-
+import { USER_AVATAR, LOGO_URL } from "../utils/constants";
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const email = useRef(null);
@@ -46,8 +45,7 @@ const Login = () => {
 
           updateProfile(user, {
             displayName: name.current?.value,
-            photoURL:
-              "https://avatars.githubusercontent.com/u/66571115?s=400&u=dd945e993887111c6eb8f1fddc32e356a499c677&v=4",
+            photoURL: USER_AVATAR,
           })
             .then(() => {
               // Profile updated!
@@ -59,7 +57,6 @@ const Login = () => {
               dispatch(
                 userSliceAction.addUser({ uid, email, displayName, photoURL })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               // An error occurred
@@ -80,7 +77,6 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
 
-          navigate("/browse");
           console.log(user);
           // ...
         })
@@ -96,10 +92,7 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/a09bb938-2d90-42ae-986e-5a3e4abf9e77/8eb1e781-3494-4aa4-9405-268ca6473e4c/IN-en-20231113-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-          alt="logo"
-        />
+        <img src={LOGO_URL} alt="logo" />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
