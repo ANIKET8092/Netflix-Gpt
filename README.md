@@ -35,6 +35,7 @@
       -Build Movie card
       -TMDB image CDN URL Used
     - UsedPopular Movie Custom Hooks
+      -Gpt Search Feature
 
 #FEATURES
 -Login /SignUp
