@@ -50,22 +50,26 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute px-8 py-8 bg-gradient-to-b from-black z-10 w-full flex justify-between">
+    <div className="absolute px-8 py-8 bg-gradient-to-b from-black z-10 w-full flex flex-col md:flex-row justify-between ">
       <img
-        className=" w-44 "
+        className=" w-44 mx-auto md:mx-[0]"
         src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
         alt="Netflix Logo"
       />
 
       {user && (
-        <div className="flex p-2 ">
+        <div className="flex p-2 justify-between">
           <button
             className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
             onClick={handleGptSearchClick}
           >
             {showGptSearch ? "HomePage" : "GPT Search"}
           </button>
-          <img className="w-12 h-12 " src={user?.photoURL} alt="user-icon" />
+          <img
+            className="w-12 h-12 hidden md:!block "
+            src={user?.photoURL}
+            alt="user-icon"
+          />
           <button className="mx-2 font-bold text-white" onClick={handleSignOut}>
             Sign Out
           </button>

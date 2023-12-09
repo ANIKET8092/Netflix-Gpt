@@ -5,9 +5,6 @@ export const USER_AVATAR =
   "https://avatars.githubusercontent.com/u/66571115?s=400&u=dd945e993887111c6eb8f1fddc32e356a499c677&v=4";
 
 export const TMDB_API_KEY = "489c28f68aecc6dde589210f3834d83c";
-export const TMDB_API_TOKEN =
-  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0ODljMjhmNjhhZWNjNmRkZTU4OTIxMGYzODM0ZDgzYyIsInN1YiI6IjY1NjFlMDBjNzA2ZTU2MDBmZTAzMWJjOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.TapTnYiwC777u3yksOYgfe9RVpFtLPB-FYo2cmnCwOA";
-
 export const API_OPTIONS = {
   method: "GET",
   headers: {
@@ -18,3 +15,6 @@ export const API_OPTIONS = {
 };
 
 export const IMAGE_CDN_URL = "https://image.tmdb.org/t/p/w500";
+export const OPEN_AI_KEY =
+  "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";
+// export const OPEN_AI_KEY = process.env.REACT_APP_OPEN_AI_KEY;

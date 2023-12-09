@@ -36,6 +36,15 @@
       -TMDB image CDN URL Used
     - UsedPopular Movie Custom Hooks
       -Gpt Search Feature
+      -Get Open Api Key
+      \_ Gpt search Api cAll
+      -Fetch gptMovieSuggestion from TMDB
+      -Created gptslice added data
+      - Reused Movie list Component to make movie suggestion contsiner
+        -Memoization
+        -Added .env file
+        -Adding .env file to gitignore
+        -Made mobile Responsive
 
 #FEATURES
 -Login /SignUp
